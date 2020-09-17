@@ -13,6 +13,7 @@ const vueLifecycles = singleSpaVue({
     }
   }
 })
+console.log('0000')
 export const bootstrap = [
   () => {
     console.log('111')

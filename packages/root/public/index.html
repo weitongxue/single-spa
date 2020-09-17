@@ -21,15 +21,24 @@
   <body>
     <script>
       (function() {
-        System.import('single-spa').then(singleSpa => {
-          console.log('启动了')
-          singleSpa.registerApplication(
-            'navbar',
-            () => System.import('navbar'),
-            location => location.pathname.startsWith('/navbar')
-          )
-          singleSpa.start();
-        })
+        try {
+          System.import('single-spa')
+            .then((res)=>{
+              var singleSpa=res;
+              singleSpa.registerApplication('navbar',()=>System.import('navbar'),location=>true);
+              singleSpa.start();
+          })
+          // System.import('single-spa').then(singleSpa => {
+          //   singleSpa.registerApplication(
+          //     'navbar',
+          //     () => System.import('navbar'),
+          //     location => location.pathname.startsWith('#/navbar')
+          //   )
+          //   singleSpa.start();
+          // })
+        } catch {
+          console.log('配置失败')
+        }
       })()
     </script>
     <div id="root"></div>
