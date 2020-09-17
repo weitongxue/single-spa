@@ -4,7 +4,11 @@
   "devDependencies": {
     "lerna": "^3.22.1"
   },
+  "scripts": {
+    "clear": "lerna clean",
+    "ic": "lerna bootstrap"
+  },
   "workspaces": [
-      "packages/*"
+    "packages/*"
   ]
 }
