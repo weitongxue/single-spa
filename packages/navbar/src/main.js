@@ -1,28 +1,23 @@
-import './set-public-path';
-import Vue from 'vue';
-import singleSpaVue from 'single-spa-vue';
+import './set-public-path'
+import Vue from 'vue'
+import singleSpaVue from 'single-spa-vue'
 
-import App from './App.vue';
+import App from './App.vue'
 
-Vue.config.productionTip = false;
-
+Vue.config.productionTip = false
 const vueLifecycles = singleSpaVue({
   Vue,
   appOptions: {
-    render(h) {
-      return h(App, {
-        props: {
-          // single-spa props are available on the "this" object. Forward them to your component as needed.
-          // https://single-spa.js.org/docs/building-applications#lifecyle-props
-          name: this.name,
-          mountParcel: this.mountParcel,
-          singleSpa: this.singleSpa,
-        },
-      });
-    },
+    render (h) {
+      return h(App)
+    }
+  }
+})
+export const bootstrap = [
+  () => {
+    console.log('111')
   },
-});
-
-export const bootstrap = vueLifecycles.bootstrap;
-export const mount = vueLifecycles.mount;
-export const unmount = vueLifecycles.unmount;
+  vueLifecycles.bootstrap
+]
+export const mount = vueLifecycles.mount
+export const unmount = vueLifecycles.unmount
