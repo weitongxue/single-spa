@@ -25,24 +25,18 @@
           System.import('single-spa')
             .then((res)=>{
               var singleSpa=res;
+              // 入口程序
               singleSpa.registerApplication('navbar',()=>System.import('navbar'),location=>true);
+              // 子程序1
+              singleSpa.registerApplication('app1',()=>System.import('app1'),(location)=>{
+                return location.hash.startsWith(`#/app1`);
+              });
+              // 子程序2
+              singleSpa.registerApplication('app2',()=>System.import('app2'),(location)=>{
+                return location.hash.startsWith(`#/app2`);
+              });
               singleSpa.start();
           })
-          System.import('single-spa')
-            .then((res)=>{
-              console.log('app1启动了')
-              var singleSpa=res;
-              singleSpa.registerApplication('app1',()=>System.import('app1'),location=> location.pathname.startsWith('#/app1'));
-              singleSpa.start();
-          })
-          // System.import('single-spa').then(singleSpa => {
-          //   singleSpa.registerApplication(
-          //     'navbar',
-          //     () => System.import('navbar'),
-          //     location => location.pathname.startsWith('#/navbar')
-          //   )
-          //   singleSpa.start();
-          // })
         } catch {
           console.log('配置失败')
         }
