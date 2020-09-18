@@ -1,8 +1,12 @@
 import './set-public-path'
 import Vue from 'vue'
+import Router from 'vue-router'
 import singleSpaVue from 'single-spa-vue'
 
+import router from './router'
 import App from './App.vue'
+
+Vue.use(Router)
 
 Vue.config.productionTip = false
 const vueLifecycles = singleSpaVue({
@@ -10,7 +14,8 @@ const vueLifecycles = singleSpaVue({
   appOptions: {
     render (h) {
       return h(App)
-    }
+    },
+    router
   }
 })
 // export const bootstrap = vueLifecycles.bootstrap

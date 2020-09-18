@@ -30,6 +30,7 @@
           })
           System.import('single-spa')
             .then((res)=>{
+              console.log('app1启动了')
               var singleSpa=res;
               singleSpa.registerApplication('app1',()=>System.import('app1'),location=> location.pathname.startsWith('#/app1'));
               singleSpa.start();

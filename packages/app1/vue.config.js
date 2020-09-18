@@ -15,11 +15,17 @@ module.exports = {
   productionSourceMap: false,
 
   outputDir: path.resolve(__dirname, `../../dist/${appName}`), // 统一打包到根目录下的dist下
-
+  configureWebpack: config => {
+    config.devServer = {
+      port,
+      headers: {
+        'Access-Control-Allow-Origin': '*'
+      }
+    }
+  },
   chainWebpack: config => {
     config.devServer.set('inline', false)
     config.devServer.set('hot', true)
-    config.devServer.set('port', port)
     // 保证打包出来的是一个js文件，供主应用进行加载
     config.output.library(appName).libraryTarget('umd')
 

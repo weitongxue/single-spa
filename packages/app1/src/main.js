@@ -1,10 +1,12 @@
 import './set-public-path'
 import Vue from 'vue'
+import Router from 'vue-router'
 import router from './router'
 import singleSpaVue from 'single-spa-vue'
 
 import App from './App.vue'
 
+Vue.use(Router)
 Vue.config.productionTip = false
 
 const vueLifecycles = singleSpaVue({
