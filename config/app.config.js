@@ -31,8 +31,7 @@ module.exports = function (process, dirname) {
       // 保证打包出来的是一个js文件，供主应用进行加载
       config.output.library(appName).libraryTarget('umd')
 
-      config.externals(['vue', 'vue-router', 'vuex']) // 一定要引否则说没有注册
-
+      config.externals(['vue', 'vue-router', 'vuex', 'systemjs']) // 一定要引否则说没有注册
       if (process.env.NODE_ENV === 'production') {
         // 打包目标文件加上 hash 字符串，禁止浏览器缓存
         config.output.filename('js/index.[hash:8].js')

@@ -7,7 +7,6 @@ import router from './router'
 import App from './App.vue'
 
 Vue.use(Router)
-
 Vue.config.productionTip = false
 const vueLifecycles = singleSpaVue({
   Vue,
